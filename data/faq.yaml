@@ -1,0 +1,8 @@
+- q: "Is this SaaS?"
+  a: "No. YTA-tools run locally or on your own server."
+- q: "Do I need an API key?"
+  a: "Most tools work without third-party APIs."
+- q: "How do I support the project?"
+  a: "Sponsor on GitHub or Patreon to unlock pro modules."
+- q: "What's the license?"
+  a: "MIT for core code; some pro modules for supporters."

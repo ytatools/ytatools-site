@@ -1,0 +1,22 @@
+services:
+  app:
+    build: 
+      context: .
+      args:
+        BASE_URL: https://${DOMAIN}
+    image: ${CONTAINER_NAME}:${IMAGE_TAG:-latest}
+    container_name: ${CONTAINER_NAME}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${TRAEFIK_ROUTER_NAME}.rule=Host(`${DOMAIN}`, `www.${DOMAIN}`)"
+      - "traefik.http.routers.${TRAEFIK_ROUTER_NAME}.entrypoints=${TRAEFIK_ENTRYPOINT:-websecure}"
+      - "traefik.http.routers.${TRAEFIK_ROUTER_NAME}.tls.certresolver=${TRAEFIK_CERT_RESOLVER:-lets}"
+      - "traefik.http.services.${TRAEFIK_ROUTER_NAME}.loadbalancer.server.port=${CONTAINER_PORT:-80}"
+    ports:
+      - ${HOST_PORT:-8080}:${CONTAINER_PORT:-80}
+    networks:
+      - traefik
+    restart: unless-stopped
+networks:
+  traefik:
+    external: true
