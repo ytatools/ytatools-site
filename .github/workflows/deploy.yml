@@ -3,12 +3,14 @@ name: Deploy to VPS
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
+  
+permissions:
+  contents: read
 
 jobs:
   deploy:
-    runs-on: [self-hosted]
+    runs-on: [self-hosted, vps, deploy]
     
     steps:
     - name: Checkout code
