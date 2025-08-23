@@ -1,0 +1,2 @@
+{{- $text := .Get 0 | default "Support the project" -}}
+<a href="{{ .Site.Params.patreon }}" target="_blank" class="text-brand hover:underline">{{ $text }}</a>

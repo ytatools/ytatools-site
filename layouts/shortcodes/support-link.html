@@ -1,0 +1,10 @@
+{{- $text := .Get 0 | default "support the project" -}}
+{{- $platform := .Get "platform" | default "patreon" -}}
+
+{{- if eq $platform "patreon" -}}
+<a href="{{ .Site.Params.patreon }}" target="_blank" class="text-brand hover:underline">{{ $text }}</a>
+{{- else if eq $platform "github" -}}
+<a href="{{ .Site.Params.github_sponsors | default .Site.Params.github }}" target="_blank" class="text-brand hover:underline">{{ $text }}</a>
+{{- else -}}
+<a href="{{ .Site.Params.patreon }}" target="_blank" class="text-brand hover:underline">{{ $text }}</a>
+{{- end -}}

@@ -1,7 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.card { @apply rounded-2xl border border-slate-200 bg-white shadow-sm; }
-.cta  { @apply inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand text-white font-semibold hover:opacity-90; }
-.btn  { @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 hover:bg-slate-50; }
-.badge{ @apply inline-flex items-center px-2 py-0.5 rounded-lg bg-slate-100 text-slate-600 text-xs; }
+
+/* Component styles */
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+}
+
+.cta {
+  @apply inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-brand text-white font-semibold hover:opacity-90 transition-opacity;
+}
+
+.btn {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 hover:bg-slate-50 transition-colors;
+}
+
+.badge {
+  @apply inline-flex items-center px-2 py-0.5 rounded-lg bg-slate-100 text-slate-600 text-xs font-medium;
+}

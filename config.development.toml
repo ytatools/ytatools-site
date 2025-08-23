@@ -1,8 +1,0 @@
-baseURL = "/"
-languageCode = "en-us"
-title = "YTA-tools"
-disableKinds = ["taxonomy", "term", "section", "RSS"]
-enableRobotsTXT = true
-[params]
-  brand = "YTA-tools"
-  tagline = "Automate your side hustle."

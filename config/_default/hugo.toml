@@ -1,0 +1,46 @@
+languageCode = "en-us"
+title = "YTATools"
+disableKinds = ["taxonomy", "term"]
+enableRobotsTXT = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[params]
+  brand = "YTATools"
+  tagline = "Automate your side hustle."
+
+  # External links
+  github = "https://github.com/YTAtools"
+  patreon = "https://www.patreon.com/YTAtools3"
+  twitter = "https://x.com/YTATools"
+  
+  # Feature flags for links
+  [params.features]
+    download_ready = false
+    github_sponsors_ready = false
+    patreon_ready = true
+    kofi_ready = false
+
+[menu]
+  [[menu.main]]
+    name = "Features"
+    url = "/#features"
+    weight = 1
+  [[menu.main]]
+    name = "Tools"
+    url = "/#tools"
+    weight = 2
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 3
+  [[menu.main]]
+    name = "Pricing"
+    url = "/#pricing"
+    weight = 4
+  [[menu.main]]
+    name = "FAQ"
+    url = "/#faq"
+    weight = 5

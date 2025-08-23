@@ -1,0 +1,116 @@
+{{ define "main" }}
+<article class="mx-auto max-w-4xl px-4 py-16">
+  <header class="mb-12">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="badge">{{ .Params.tag }}</span>
+      {{ if eq .Params.status "in-development" }}
+        <span class="badge bg-yellow-100 text-yellow-800">🚧 In Development</span>
+      {{ else if eq .Params.status "planned" }}
+        <span class="badge bg-blue-100 text-blue-800">📋 Planned</span>
+      {{ else if eq .Params.status "ready" }}
+        <span class="badge bg-green-100 text-green-800">✅ Ready</span>
+      {{ end }}
+    </div>
+    
+    <h1 class="text-4xl font-bold tracking-tight mb-4">{{ .Title }}</h1>
+    <p class="text-lg text-slate-600 leading-relaxed">{{ .Params.description }}</p>
+    
+    <div class="flex gap-4 mt-8">
+      {{ if .Params.github }}
+        <a href="{{ .Site.Params.github }}/{{ .Params.github }}" target="_blank" class="btn">
+          View on GitHub →
+        </a>
+      {{ end }}
+      
+      {{ if eq .Params.status "ready" }}
+        <a href="#download" class="cta">Download Now</a>
+      {{ else if eq .Params.status "in-development" }}
+        <a href="{{ .Site.Params.patreon }}" target="_blank" class="cta">Support for Beta Access</a>
+      {{ else }}
+        <a href="{{ .Site.Params.patreon }}" target="_blank" class="btn">Get Updates</a>
+      {{ end }}
+    </div>
+  </header>
+
+  <div class="prose prose-slate prose-lg max-w-none">
+    {{ .Content }}
+  </div>
+
+  <!-- Feature Lists (if present) -->
+  {{ if .Params.features }}
+    <div class="mt-12 p-8 bg-slate-50 rounded-xl">
+      <h3 class="text-xl font-semibold mb-6">Features Overview</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        {{ if .Params.features.free }}
+          <div>
+            <h4 class="font-medium text-slate-900 mb-3">Free Features</h4>
+            <ul class="space-y-2">
+              {{ range .Params.features.free }}
+                <li class="flex items-center gap-2">
+                  <span class="text-green-600">✅</span>
+                  <span class="text-slate-700">{{ . }}</span>
+                </li>
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+        
+        {{ if .Params.features.premium }}
+          <div>
+            <h4 class="font-medium text-slate-900 mb-3">Premium Features</h4>
+            <ul class="space-y-2">
+              {{ range .Params.features.premium }}
+                <li class="flex items-center gap-2">
+                  <span class="text-brand">💎</span>
+                  <span class="text-slate-700">{{ . }}</span>
+                </li>
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+        
+        {{ if .Params.features.core }}
+          <div>
+            <h4 class="font-medium text-slate-900 mb-3">Core Features</h4>
+            <ul class="space-y-2">
+              {{ range .Params.features.core }}
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-600">🔧</span>
+                  <span class="text-slate-700">{{ . }}</span>
+                </li>
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+        
+        {{ if .Params.features.advanced }}
+          <div>
+            <h4 class="font-medium text-slate-900 mb-3">Advanced Features</h4>
+            <ul class="space-y-2">
+              {{ range .Params.features.advanced }}
+                <li class="flex items-center gap-2">
+                  <span class="text-purple-600">⚡</span>
+                  <span class="text-slate-700">{{ . }}</span>
+                </li>
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+
+  <footer class="mt-16 pt-8 border-t border-slate-200">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-slate-600">Interested in this tool?</p>
+        <a href="{{ .Site.Params.patreon }}" target="_blank" class="text-brand hover:underline">
+          Support the project for early access →
+        </a>
+      </div>
+      
+      <a href="/tools/" class="btn">← Back to Tools</a>
+    </div>
+  </footer>
+</article>
+{{ end }}

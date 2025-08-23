@@ -1,0 +1,2 @@
+{{- $text := .Get 0 | default "Follow us on X" -}}
+<a href="{{ .Site.Params.twitter }}" target="_blank" class="text-brand hover:underline">{{ $text }}</a>

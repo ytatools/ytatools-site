@@ -2,11 +2,12 @@
   "name": "yta-tools-site",
   "private": true,
   "scripts": {
-    "dev": "hugo server -D --config config.development.toml",
-    "build": "hugo --gc --minify --config config.production.toml",
-    "build:dev": "hugo --gc --minify --config config.development.toml"
+    "dev": "hugo server -D --environment development",
+    "build": "hugo --gc --minify --environment production",
+    "build:dev": "hugo --gc --minify --environment development"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.18",
     "postcss": "^8.4.41",
     "postcss-cli": "^11.0.0",

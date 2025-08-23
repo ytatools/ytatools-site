@@ -1,18 +1,22 @@
 <header class="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-slate-200">
   <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <img src="/logo.svg" alt="logo" class="w-8 h-8"/><span class="font-semibold tracking-tight">{{ .Site.Params.brand }}</span>
+    <a href="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+      <img src="/logo.svg" alt="YTATools logo" class="w-8 h-8"/>
+      <span class="font-semibold tracking-tight">{{ .Site.Params.brand }}</span>
       <span class="badge ml-2">beta</span>
-    </div>
+    </a>
     <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="#features" class="hover:opacity-80">Features</a>
-      <a href="#tools" class="hover:opacity-80">Tools</a>
-      <a href="#pricing" class="hover:opacity-80">Pricing</a>
-      <a href="#faq" class="hover:opacity-80">FAQ</a>
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="hover:opacity-80">{{ .Name }}</a>
+      {{ end }}
     </nav>
     <div class="flex items-center gap-2">
-      <a class="btn" href="https://github.com/YTAtools">GitHub</a>
-      <a class="cta" href="#download">Download</a>
+      <a class="btn" href="{{ .Site.Params.github }}" target="_blank">GitHub</a>
+      {{ if .Site.Params.features.download_ready }}
+        <a class="cta" href="#download">Download</a>
+      {{ else }}
+        <a class="btn opacity-50 cursor-not-allowed" title="Coming soon!">Download</a>
+      {{ end }}
     </div>
   </div>
 </header>

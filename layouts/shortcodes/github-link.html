@@ -1,0 +1,2 @@
+{{- $text := .Get 0 | default "GitHub" -}}
+<a href="{{ .Site.Params.github }}" target="_blank" class="text-brand hover:underline">{{ $text }}</a>

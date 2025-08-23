@@ -25,8 +25,17 @@
           <li>✅ Sponsor badge in-app</li>
         </ul>
         <div class="mt-6 flex gap-3">
-          <a class="cta" href="#github-sponsors">GitHub Sponsors</a>
-          <a class="btn" href="#patreon">Patreon</a>
+          {{ if .Site.Params.features.patreon_ready }}
+            <a class="cta" href="{{ .Site.Params.patreon }}" target="_blank">Support on Patreon</a>
+          {{ end }}
+          {{ if .Site.Params.features.github_sponsors_ready }}
+            <a class="btn" href="{{ .Site.Params.github_sponsors }}" target="_blank">GitHub Sponsors</a>
+          {{ else }}
+            <a class="btn opacity-50 cursor-not-allowed" title="Coming soon!">GitHub Sponsors</a>
+          {{ end }}
+          {{ if .Site.Params.features.kofi_ready }}
+            <a class="btn" href="{{ .Site.Params.kofi }}" target="_blank">Ko-fi</a>
+          {{ end }}
         </div>
       </div>
     </div>
